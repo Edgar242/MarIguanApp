@@ -1,13 +1,13 @@
-package com.mar_iguana.tours.ui.notifications
+package com.mar_iguana.tours.ui.wishlist
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 
-class NotificationsViewModel : ViewModel() {
+class WishlistViewModel : ViewModel() {
 
     private val _text = MutableLiveData<String>().apply {
-        value = "This is notifications Fragment"
+        value = "This is wishlist Fragment"
     }
     val text: LiveData<String> = _text
 }
