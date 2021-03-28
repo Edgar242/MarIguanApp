@@ -5,15 +5,15 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.mar_iguana.tours.R
-import com.mar_iguana.tours.databinding.FragmentHomeBinding
+import com.mar_iguana.tours.databinding.TourItemBinding
 import com.mar_iguana.tours.models.Tour
 
 class TourAdapter(val tours: ArrayList<Tour>) : RecyclerView.Adapter<TourAdapter.MyViewHolder>() {
-    private lateinit var binding: FragmentHomeBinding
+    private lateinit var binding: TourItemBinding
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
-        val itemView = LayoutInflater.from(parent.context).inflate(R.layout.fragment_home, parent, false)
-        binding = FragmentHomeBinding.bind(itemView)
+        val itemView = LayoutInflater.from(parent.context).inflate(R.layout.tour_item, parent, false)
+        binding = TourItemBinding.bind(itemView)
         return MyViewHolder(itemView)
     }
 
