@@ -1,6 +1,6 @@
 <resources>
-    <string name="app_name">MarIguanApp</string>
-    <string name="title_activity_main2">MainActivity</string>
+    <string name="app_name">Mar-Iguana Tours</string>
+    <string name="title_activity_main">MainActivity</string>
     <string name="title_home">Home</string>
     <string name="title_wishlist">Wishlist</string>
     <string name="title_profile">Profile</string>
