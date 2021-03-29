@@ -7,4 +7,6 @@ data class Tour(
     val dates: String,
     val rating: Float,
     val images: List<Int>,
+    val info: String,
+    val itinerary: String,
 )
