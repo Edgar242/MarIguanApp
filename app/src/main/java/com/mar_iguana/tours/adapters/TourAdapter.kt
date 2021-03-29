@@ -20,7 +20,7 @@ class TourAdapter(val tours: ArrayList<Tour>) : RecyclerView.Adapter<TourAdapter
     }
 
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
-        holder.bindTour(tours[position], position)
+        holder.bindTour(tours[position])
     }
 
     override fun getItemCount(): Int {
@@ -28,7 +28,7 @@ class TourAdapter(val tours: ArrayList<Tour>) : RecyclerView.Adapter<TourAdapter
     }
 
     inner class MyViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        fun bindTour(tour: Tour, position: Int) {
+        fun bindTour(tour: Tour) {
             binding.imageViewPortrait.setImageResource(tour.images[0])
             binding.textViewTitle.text = tour.title
             binding.textViewDates.text = tour.dates
