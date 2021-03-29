@@ -50,6 +50,30 @@ class HomeFragment : Fragment() {
                 4.8F,
                 listOf<Int>(R.drawable.real_de_catorce),
             ),
+            Tour(
+                100,
+                "Real de Catorce y la Media Luna (Fin de semana)",
+                2150F,
+                "Del 14 al 16 de mayo de 2021",
+                4.8F,
+                listOf<Int>(R.drawable.real_de_catorce),
+            ),
+            Tour(
+                100,
+                "Real de Catorce y la Media Luna (Fin de semana)",
+                2150F,
+                "Del 14 al 16 de mayo de 2021",
+                4.8F,
+                listOf<Int>(R.drawable.real_de_catorce),
+            ),
+            Tour(
+                100,
+                "Real de Catorce y la Media Luna (Fin de semana)",
+                2150F,
+                "Del 14 al 16 de mayo de 2021",
+                4.8F,
+                listOf<Int>(R.drawable.real_de_catorce),
+            ),
         )
 
         // Set adapter
