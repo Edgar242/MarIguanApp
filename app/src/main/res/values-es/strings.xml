@@ -19,4 +19,6 @@
     <string name="invalid_phone_number">Número de teléfono inválido</string>
     <string name="too_short_password">La contraseña debe tener por lo menos 6 caracteres.</string>
     <string name="passwords_do_not_match">Las contraseñas no coinciden</string>
+    <string name="login">Iniciar sesión</string>
+    <string name="wrong_email_or_password">Correo o contraseña incorrecto(s)</string>
 </resources>
