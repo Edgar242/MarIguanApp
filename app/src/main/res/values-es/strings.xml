@@ -3,4 +3,20 @@
     <string name="title_home">Inicio</string>
     <string name="title_wishlist">Lista de deseos</string>
     <string name="title_profile">Perfil</string>
+    <string name="input_name">Nombre</string>
+    <string name="input_lastname">Apellidos</string>
+    <string name="input_email">Correo electrónico</string>
+    <string name="input_password">Contraseña</string>
+    <string name="input_repeat_password">Repetir contraseña</string>
+    <string name="input_celular">Celular</string>
+    <string name="input_gender">Género</string>
+    <string name="input_male">Masculino</string>
+    <string name="input_female">Femenino</string>
+    <string name="button_register">Registrarse</string>
+    <string name="invalid_name">Nombre inválido</string>
+    <string name="invalid_last_name">Apellido(s) inválido(s)</string>
+    <string name="invalid_email">Correo electrónico inválido</string>
+    <string name="invalid_phone_number">Número de teléfono inválido</string>
+    <string name="too_short_password">La contraseña debe tener por lo menos 6 caracteres.</string>
+    <string name="passwords_do_not_match">Las contraseñas no coinciden</string>
 </resources>
