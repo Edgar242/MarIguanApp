@@ -1,10 +1,10 @@
 package com.mar_iguana.tours.ui.home
 
 import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import android.util.Log
+import android.view.*
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.commit
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.RecyclerView
@@ -12,9 +12,10 @@ import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.mar_iguana.tours.R
 import com.mar_iguana.tours.adapters.TourAdapter
 import com.mar_iguana.tours.databinding.FragmentHomeBinding
+import com.mar_iguana.tours.listeners.TourListener
 import com.mar_iguana.tours.models.Tour
 
-class HomeFragment : Fragment() {
+class HomeFragment : Fragment(), TourListener {
 
     private lateinit var homeViewModel: HomeViewModel
     // _binding property is only valid between onCreateView and onDestroyView.
@@ -22,10 +23,12 @@ class HomeFragment : Fragment() {
     private val binding get() = _binding!!
     private lateinit var tourAdapter: TourAdapter
 
+    lateinit var tourDetailFragment:TourDetailFragment
+
     override fun onCreateView(
-            inflater: LayoutInflater,
-            container: ViewGroup?,
-            savedInstanceState: Bundle?
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
     ): View? {
         _binding = FragmentHomeBinding.inflate(inflater, container, false)
         val view = binding.root
@@ -35,6 +38,8 @@ class HomeFragment : Fragment() {
         homeViewModel.text.observe(viewLifecycleOwner, Observer {
 //            binding.textHome.text = it
         })
+
+
 
         showTours()
         return view
@@ -48,7 +53,11 @@ class HomeFragment : Fragment() {
                 2150F,
                 "Del 14 al 16 de mayo de 2021",
                 4.8F,
-                listOf<Int>(R.drawable.real_de_catorce_0, R.drawable.real_de_catorce_1, R.drawable.real_de_catorce_2),
+                listOf<Int>(
+                    R.drawable.real_de_catorce_0,
+                    R.drawable.real_de_catorce_1,
+                    R.drawable.real_de_catorce_2
+                ),
                 "Real de Catorce es un lugar espectacular, un pueblo mágico donde nos adentraremos en un mundo que se detuvo en el tiempo de la minería de principios de siglo. En este viaje haremos un tour hacia el pueblo fantasma, daremos un paseo en los famosos willys para conocer el desierto donde podrás observar la planta del peyote y visitar Wirikuta (lugar sagrado para huicholes o wixárikas) ¡No te lo puedes perder! \n" +
                         "\n" +
                         "\n" +
@@ -63,6 +72,7 @@ class HomeFragment : Fragment() {
                         "• Pueblo fantasma\n" +
                         "• Cerro del quemado o wirikuta (recorrido opcional)\n" +
                         "• Laguna de la Media Luna",
+                "Preventa \$ 8,000 antes del 5 de mayo"
             ),
             Tour(
                 100,
@@ -97,6 +107,7 @@ class HomeFragment : Fragment() {
                         "• Dunas del desierto\n" +
                         "• Pinturas rupestres\n" +
                         "• tour por el Desierto",
+                "Preventa \$ 4,500 antes del 1 de marzo"
             ),
             Tour(
                 100,
@@ -116,6 +127,7 @@ class HomeFragment : Fragment() {
                         "• Creel (Lago Arareko, Cuevas Tarahumaras, Cascada Cusarare, Valle de los Hongos y las Ranas y Las Misiones)\n" +
                         "• Barrancas del Cobre (Divisadero y Piedra Volada)\n" +
                         "• Parque de Aventuras Barrancas del cobre (actividades opcionales con costo extra)",
+                "Preventa \$ 8,000 antes del 1 de diciembre"
             ),
             Tour(
                 100,
@@ -148,18 +160,39 @@ class HomeFragment : Fragment() {
                         "• Cascadas de Agua Azul\n" +
                         "• Cascada de Misol-Ha\n" +
                         "• Zona arqueológica de Palenque",
+                "Preventa $ 5,300 antes de 1 de abril"
             ),
         )
 
+        //create adapter and set listener click on cardview
+        val tourAdapter = TourAdapter(tours)
+        tourAdapter.setTourListener(this)
         // Set adapter
-        binding.recyclerViewTours.adapter = TourAdapter(tours)
+        binding.recyclerViewTours.adapter = tourAdapter
         val layoutManager = StaggeredGridLayoutManager(1, RecyclerView.VERTICAL)
         binding.recyclerViewTours.layoutManager = layoutManager
     }
-
 
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
     }
+
+    //Actions to do when click over cardView
+    override fun onClickShowTourDetail(tour: Tour) {
+        tourDetailFragment = TourDetailFragment()
+
+        //Set tour data to detail fragment
+        val bundleTour = Bundle()
+        bundleTour.putParcelable("dataTour",tour)
+        tourDetailFragment.arguments = bundleTour
+
+        //Go to detail fragment
+        parentFragmentManager.beginTransaction().apply {
+            replace(R.id.nav_host_fragment, tourDetailFragment)
+            addToBackStack(null)
+            commit()
+        }
+    }
+
 }

@@ -3,4 +3,7 @@
     <string name="title_home">Inicio</string>
     <string name="title_wishlist">Lista de deseos</string>
     <string name="title_profile">Perfil</string>
+    <string name="tab_info">INFORMACIÓN</string>
+    <string name="tab_itinerary">ITINERARIO</string>
+    <string name="lbl_visit">Visitaremos: </string>
 </resources>
