@@ -19,7 +19,7 @@
 
     <fragment
         android:id="@+id/navigation_notifications"
-        android:name="com.mar_iguana.tours.ui.profile.ProfileFragment"
+        android:name="com.mar_iguana.tours.ui.profile.RegisterFragment"
         android:label="@string/title_profile"
-        tools:layout="@layout/fragment_profile" />
+        tools:layout="@layout/fragment_register" />
 </navigation>
