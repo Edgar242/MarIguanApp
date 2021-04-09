@@ -25,4 +25,6 @@
     <string name="tab_info">INFORMATION</string>
     <string name="tab_itinerary">ITINERARY</string>
     <string name="lbl_visit">We will visit: </string>
+    <string name="verification_e_sent">Verification email sent</string>
+    <string name="an_error_ocurred">An error occurred while sending the verification email</string>
 </resources>
