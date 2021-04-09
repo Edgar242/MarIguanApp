@@ -221,7 +221,7 @@ class RegisterFragment : Fragment() {
                     }
                 }
         }
-
+    //users
     }
     private fun verifyEmail(user:FirebaseUser?){
         user?.sendEmailVerification()
