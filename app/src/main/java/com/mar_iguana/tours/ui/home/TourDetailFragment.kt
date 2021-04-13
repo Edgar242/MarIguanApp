@@ -14,6 +14,7 @@ import com.mar_iguana.tours.adapters.PagerTabAdapter
 import com.mar_iguana.tours.databinding.FragmentTourDetailBinding
 import com.mar_iguana.tours.models.Tour
 import com.mar_iguana.tours.ui.home.book.BookFragment
+import me.relex.circleindicator.CircleIndicator3
 
 
 class TourDetailFragment : Fragment() {
@@ -42,9 +43,12 @@ class TourDetailFragment : Fragment() {
         val viewPagerImages: ViewPager2 = view.findViewById(R.id.viewPagerBar)
         viewPagerImages.adapter = tourDetail?.images?.let { ImageSliderAdapter(it) }
         viewPagerImages.orientation = ViewPager2.ORIENTATION_HORIZONTAL
-        binding.indicator.setViewPager(viewPagerImages)
-        viewPagerImages.adapter?.registerAdapterDataObserver(binding.indicator.adapterDataObserver);
+
+        val indicator: CircleIndicator3 = view.findViewById(R.id.indicator)
+        indicator.setViewPager(viewPagerImages)
+        viewPagerImages.adapter?.registerAdapterDataObserver(indicator.adapterDataObserver);
         //End Image Slider Bar
+
         initViewPager(view, tourDetail)
         return view
     }
