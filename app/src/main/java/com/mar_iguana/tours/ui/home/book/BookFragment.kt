@@ -1,12 +1,12 @@
 package com.mar_iguana.tours.ui.home.book
 
-import android.R
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.viewpager2.widget.ViewPager2
+import com.mar_iguana.tours.R
 import com.mar_iguana.tours.adapters.ViewPagerStepperAdapter
 import com.mar_iguana.tours.databinding.FragmentBookBinding
 import com.mar_iguana.tours.models.Tour
@@ -25,7 +25,10 @@ class BookFragment : Fragment() {
         arguments?.let {
             tourDetail = it.getParcelable<Tour>(ARG_PARAM)!!
         }
+
 //        Toast.makeText(context, tourDetail.toString(), Toast.LENGTH_SHORT).show()
+        // Get price
+
     }
 
     override fun onCreateView(
@@ -35,19 +38,22 @@ class BookFragment : Fragment() {
         _binding = FragmentBookBinding.inflate(inflater, container, false)
         val view = b.root
 
-        b.textViewTotal.text = tourDetail.price.toString()
-
         setupStepperView()
         setupViewPager()
-        setupButtons()
+        setupButtonsListener()
 
         return  view
     }
 
+    // Show button after is selected a seat
+    fun showNextButton() {
+        b.buttonNext.visibility = View.VISIBLE
+    }
+
     private fun setupStepperView() {
         b.stepperView.state
-            .steps(listOf("First step", "Second step", "Third step"))
-            .animationDuration(resources.getInteger(R.integer.config_shortAnimTime))
+            .steps(resources.getStringArray(R.array.book_steps).toMutableList())
+            .animationDuration(resources.getInteger(android.R.integer.config_shortAnimTime))
             .commit()
 
         b.stepperView.setOnStepClickListener { position ->
@@ -56,7 +62,7 @@ class BookFragment : Fragment() {
     }
 
     private fun setupViewPager() {
-        b.viewPagerStepper.adapter = ViewPagerStepperAdapter(parentFragmentManager, lifecycle)
+        b.viewPagerStepper.adapter = ViewPagerStepperAdapter(childFragmentManager, lifecycle)
         b.viewPagerStepper.registerOnPageChangeCallback(
             object : ViewPager2.OnPageChangeCallback() {
                 override fun onPageSelected(position: Int) {
@@ -68,7 +74,7 @@ class BookFragment : Fragment() {
         )
     }
 
-    private fun setupButtons() {
+    private fun setupButtonsListener() {
         b.buttonBack.setOnClickListener {
             b.viewPagerStepper.setCurrentItem(
                 b.viewPagerStepper.currentItem - 1, false)
@@ -108,10 +114,10 @@ class BookFragment : Fragment() {
         // TODO: Rename and change types and number of parameters
         @JvmStatic
         fun newInstance(tourDetail: Tour) =
-                BookFragment().apply {
-                    arguments = Bundle().apply {
-                        putParcelable(ARG_PARAM, tourDetail)
-                    }
+            BookFragment().apply {
+                arguments = Bundle().apply {
+                    putParcelable(ARG_PARAM, tourDetail)
                 }
+            }
     }
 }
