@@ -25,4 +25,24 @@
     <string name="tab_info">INFORMATION</string>
     <string name="tab_itinerary">ITINERARY</string>
     <string name="lbl_visit">We will visit: </string>
+    <string name="please_select_a_seat">Please select a seat</string>
+    <string name="seat_available">Available</string>
+    <string name="seat_selected">Selected</string>
+    <string name="seat_not_available">Not available</string>
+    <plurals name="book_seats">
+        <item quantity="zero">No seats selected</item>
+        <item quantity="one">Book 1 seat</item>
+        <item quantity="other">Book %d seats</item>
+    </plurals>
+    <string-array name="book_steps">
+        <item>Select a seat</item>
+        <item>Select room options</item>
+        <item>Select payment</item>
+    </string-array>
+    <string-array name="payment_type">
+        <item>Payment type</item>
+        <item>Deposit</item>
+        <item>Bank transfer</item>
+        <item>Check</item>
+    </string-array>
 </resources>

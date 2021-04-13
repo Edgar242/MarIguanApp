@@ -21,8 +21,6 @@ class HomeFragment : Fragment(), TourListener {
     private val binding get() = _binding!!
     private lateinit var tourAdapter: TourAdapter
 
-    lateinit var tourDetailFragment:TourDetailFragment
-
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -170,7 +168,7 @@ class HomeFragment : Fragment(), TourListener {
 
     //Actions to do when click over cardView
     override fun onClickShowTourDetail(tour: Tour) {
-        tourDetailFragment = TourDetailFragment()
+        val tourDetailFragment = TourDetailFragment()
 
         //Set tour data to detail fragment
         val bundleTour = Bundle()
