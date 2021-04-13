@@ -1,24 +1,18 @@
 package com.mar_iguana.tours.ui.home
 
 import android.os.Bundle
-import android.util.Log
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
 import android.widget.RatingBar
 import android.widget.TextView
-import androidx.viewpager2.widget.ViewPager2
-import com.google.android.material.appbar.AppBarLayout
+import androidx.fragment.app.Fragment
 import com.mar_iguana.tours.R
 import com.mar_iguana.tours.models.Tour
 import java.text.NumberFormat
 import java.util.*
 
 class InfoTourFragment : Fragment() {
-
-
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -27,7 +21,6 @@ class InfoTourFragment : Fragment() {
         // Inflate the layout for this fragment
         val view = inflater.inflate(R.layout.fragment_info_tour, container, false)
 
-        //val tourInfo : Tour? = parentFragment?.arguments?.getParcelable<Tour>("dataTour")
         val tourInfo =  getArguments()?.getParcelable<Tour>("dataTour")
 
         val title = view.findViewById<TextView>(R.id.titleTextView)

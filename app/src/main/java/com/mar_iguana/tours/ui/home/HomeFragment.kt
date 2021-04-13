@@ -1,12 +1,10 @@
 package com.mar_iguana.tours.ui.home
 
 import android.os.Bundle
-import android.util.Log
-import android.view.*
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.commit
-import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.mar_iguana.tours.R
@@ -23,8 +21,6 @@ class HomeFragment : Fragment(), TourListener {
     private val binding get() = _binding!!
     private lateinit var tourAdapter: TourAdapter
 
-    lateinit var tourDetailFragment:TourDetailFragment
-
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -32,14 +28,6 @@ class HomeFragment : Fragment(), TourListener {
     ): View? {
         _binding = FragmentHomeBinding.inflate(inflater, container, false)
         val view = binding.root
-
-        homeViewModel =
-                ViewModelProvider(this).get(HomeViewModel::class.java)
-        homeViewModel.text.observe(viewLifecycleOwner, Observer {
-//            binding.textHome.text = it
-        })
-
-
 
         showTours()
         return view
@@ -165,7 +153,7 @@ class HomeFragment : Fragment(), TourListener {
         )
 
         //create adapter and set listener click on cardview
-        val tourAdapter = TourAdapter(tours)
+        tourAdapter = TourAdapter(tours)
         tourAdapter.setTourListener(this)
         // Set adapter
         binding.recyclerViewTours.adapter = tourAdapter
@@ -180,7 +168,7 @@ class HomeFragment : Fragment(), TourListener {
 
     //Actions to do when click over cardView
     override fun onClickShowTourDetail(tour: Tour) {
-        tourDetailFragment = TourDetailFragment()
+        val tourDetailFragment = TourDetailFragment()
 
         //Set tour data to detail fragment
         val bundleTour = Bundle()

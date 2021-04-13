@@ -1,32 +1,43 @@
 package com.mar_iguana.tours.ui.home
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
+import androidx.fragment.app.Fragment
 import androidx.viewpager2.widget.ViewPager2
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
 import com.mar_iguana.tours.R
 import com.mar_iguana.tours.adapters.ImageSliderAdapter
 import com.mar_iguana.tours.adapters.PagerTabAdapter
+import com.mar_iguana.tours.databinding.FragmentTourDetailBinding
 import com.mar_iguana.tours.models.Tour
+import com.mar_iguana.tours.ui.home.book.BookFragment
 import me.relex.circleindicator.CircleIndicator3
 
 
 class TourDetailFragment : Fragment() {
-
+    private var _binding: FragmentTourDetailBinding? = null
+    private val binding get() = _binding!!
     lateinit var imageViewPager : ViewPager2
     //private var imagesBarList = mutableListOf<Int>()
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,savedInstanceState: Bundle?): View? {
         // Inflate the layout for this fragment
-        val view = inflater.inflate(R.layout.fragment_tour_detail, container, false)
+        _binding = FragmentTourDetailBinding.inflate(inflater, container, false)
+        val view = binding.root
 
         //Get data Tour
         val tourDetail =  getArguments()?.getParcelable<Tour>("dataTour")
+        
+        binding.buttonBook.setOnClickListener {
+            parentFragmentManager.beginTransaction().apply {
+                replace(R.id.nav_host_fragment, BookFragment.newInstance(tourDetail!!))
+                addToBackStack(null)
+                commit()
+            }
+        }
 
         //Begin Image Slider Bar
         val viewPagerImages: ViewPager2 = view.findViewById(R.id.viewPagerBar)
@@ -45,7 +56,7 @@ class TourDetailFragment : Fragment() {
     //Configure tabLayout and ViewPager to show detail
     private fun initViewPager(view:View, tour: Tour?){
         val viewPager: ViewPager2 = view.findViewById(R.id.pagerDetailTour)
-        val adapterPager = PagerTabAdapter(parentFragmentManager , lifecycle)
+        val adapterPager = PagerTabAdapter(childFragmentManager , lifecycle)
         tour?.let { adapterPager.setTour(it) }
         viewPager.adapter = adapterPager
 

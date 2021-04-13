@@ -3,7 +3,6 @@ package com.mar_iguana.tours.adapters
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
 import androidx.cardview.widget.CardView
 import androidx.recyclerview.widget.RecyclerView
 import com.mar_iguana.tours.R
@@ -14,12 +13,10 @@ import java.text.NumberFormat
 import java.util.*
 
 class TourAdapter(val tours: ArrayList<Tour>) : RecyclerView.Adapter<TourAdapter.MyViewHolder>() {
-    private lateinit var binding: TourItemBinding
     private var tourListener: TourListener? = null
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
         val itemView = LayoutInflater.from(parent.context).inflate(R.layout.tour_item, parent, false)
-        binding = TourItemBinding.bind(itemView)
         val tourViewHolder = MyViewHolder(itemView)
         tourViewHolder.setTourListener(tourListener)
         return tourViewHolder
@@ -38,7 +35,7 @@ class TourAdapter(val tours: ArrayList<Tour>) : RecyclerView.Adapter<TourAdapter
     }
 
     inner class MyViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-
+        private val binding = TourItemBinding.bind(itemView)
         private var tourListener: TourListener? = null
         private var cardTour: CardView = itemView.findViewById(R.id.cardViewProduct)
 
