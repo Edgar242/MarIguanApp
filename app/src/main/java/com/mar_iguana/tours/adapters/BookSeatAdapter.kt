@@ -26,7 +26,7 @@ class BookSeatAdapter(val listener: BookStepOneFragment, private val seats : Arr
     }
 
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
-        holder.bindBookSeat(seats[position], position)
+        holder.bindBookSeat(seats[position])
     }
 
     override fun getItemCount(): Int {
@@ -36,7 +36,7 @@ class BookSeatAdapter(val listener: BookStepOneFragment, private val seats : Arr
     inner class MyViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         private val binding = BookSeatItemBinding.bind(itemView)
 
-        fun bindBookSeat(seat: Seat, position: Int) {
+        fun bindBookSeat(seat: Seat) {
             drawSeats(seat)
 
             binding.imageButtonSeat.setOnClickListener {
