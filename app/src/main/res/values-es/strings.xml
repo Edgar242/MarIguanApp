@@ -24,6 +24,8 @@
     <string name="tab_info">INFORMACIÓN</string>
     <string name="tab_itinerary">ITINERARIO</string>
     <string name="lbl_visit">Visitaremos: </string>
+    <string name="verification_e_sent">Correo de verificación enviado</string>
+    <string name="an_error_ocurred">Ocurrió un error al enviar el correo de verificación</string>
     <string name="please_select_a_seat">Por favor, seleccione un asiento</string>
     <string name="seat_available">Disponible</string>
     <string name="seat_selected">Seleccionado</string>

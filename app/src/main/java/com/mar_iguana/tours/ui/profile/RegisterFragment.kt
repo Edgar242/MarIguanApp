@@ -1,13 +1,19 @@
 package com.mar_iguana.tours.ui.profile
 
+import android.app.Activity
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ProgressBar
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.FirebaseUser
+import com.google.firebase.database.DatabaseReference
+import com.google.firebase.database.FirebaseDatabase
 import com.mar_iguana.tours.R
 import com.mar_iguana.tours.databinding.FragmentRegisterBinding
 
@@ -23,8 +29,11 @@ class RegisterFragment : Fragment() {
     var gender : Boolean = false
     var genderValue : String = "N"
     var correctPassword : Boolean = false
-    var pass : String = ""
-    var repeat_pass : String = ""
+
+    private lateinit var dbReference: DatabaseReference
+    private lateinit var database: FirebaseDatabase
+    private lateinit var auth : FirebaseAuth
+    private lateinit var progressBar : ProgressBar
 
     override fun onCreateView(
             inflater: LayoutInflater,
@@ -136,8 +145,17 @@ class RegisterFragment : Fragment() {
         //Radio group
         binding.radioGroup.setOnCheckedChangeListener { group, checkedId ->
             gender = true
-            genderValue = getText(checkedId).toString()
-            //Toast.makeText(activity,genderValue,Toast.LENGTH_SHORT).show()
+            genderValue = when (checkedId){
+                R.id.radioMale -> {
+                    "M"
+                }
+                R.id.radioFemale -> {
+                    "F"
+                }
+                else -> {
+                    "N"
+                }
+            }
             validation()
         }
 
@@ -177,6 +195,45 @@ class RegisterFragment : Fragment() {
             }
         })
 
+        database = FirebaseDatabase.getInstance()
+        auth = FirebaseAuth.getInstance()
+        dbReference = database.reference.child("User")
+        progressBar = binding.progressBar
+
+        //Create new account
+        binding.button.setOnClickListener {
+            progressBar.visibility = View.VISIBLE
+            auth
+                .createUserWithEmailAndPassword(binding.etEmail.text.toString(),
+                    binding.etPassword.text.toString())
+                .addOnCompleteListener(){
+                    task ->
+                    if(task.isComplete){
+                        val user:FirebaseUser? = auth.currentUser
+                        verifyEmail(user)
+
+                        val userBD = dbReference.child(user?.uid.toString())
+
+                        userBD.child("name").setValue(binding.etNameU.text.toString())
+                        userBD.child("lastname").setValue(binding.etLastName.text.toString())
+                        userBD.child("phone_number").setValue(binding.etCPNumber.text.toString())
+                        userBD.child("gender").setValue(genderValue)
+                    }
+                }
+        }
+    //users
+    }
+    private fun verifyEmail(user:FirebaseUser?){
+        user?.sendEmailVerification()
+            ?.addOnCompleteListener(){
+                task ->
+                if(task.isComplete){
+                    Toast.makeText(activity,R.string.verification_e_sent,Toast.LENGTH_LONG).show()
+                }else{
+                    Toast.makeText(activity,R.string.an_error_ocurred,Toast.LENGTH_LONG).show()
+                }
+
+            }
     }
 
 }

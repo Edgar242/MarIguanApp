@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "530823370034",
+    "project_id": "mariguanapp-8b189",
+    "storage_bucket": "mariguanapp-8b189.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:530823370034:android:878e9df58dcb30a4b8732b",
+        "android_client_info": {
+          "package_name": "com.mar_iguana.tours"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "530823370034-in7m1mproo762kpluknm73j9m0ba2o2k.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCltKw32AST9-70b8O9cS0nWCpNTZJsbOA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "530823370034-in7m1mproo762kpluknm73j9m0ba2o2k.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
