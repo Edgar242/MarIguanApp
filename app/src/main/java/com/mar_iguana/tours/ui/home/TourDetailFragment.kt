@@ -29,6 +29,7 @@ class TourDetailFragment : Fragment() {
         binding.buttonBook.setOnClickListener {
             parentFragmentManager.beginTransaction().apply {
                 replace(R.id.nav_host_fragment, BookFragment.newInstance(tourDetail!!))
+                addToBackStack(null)
                 commit()
             }
         }
@@ -42,7 +43,7 @@ class TourDetailFragment : Fragment() {
         val tourDetail =  arguments?.getParcelable<Tour>("dataTour")
         tourDetail?.images?.get(0)?.let { binding.appBarImage.setImageResource(it) }
 
-        val adapterPager = PagerTabAdapter(parentFragmentManager , lifecycle)
+        val adapterPager = PagerTabAdapter(childFragmentManager , lifecycle)
         tourDetail?.let { adapterPager.setTour(it) }
         binding.pagerDetailTour.adapter = adapterPager
 
