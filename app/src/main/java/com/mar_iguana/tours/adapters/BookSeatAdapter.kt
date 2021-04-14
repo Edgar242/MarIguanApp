@@ -64,6 +64,7 @@ class BookSeatAdapter(val listener: BookStepOneFragment, private val seats : Arr
 
             if (seat.status == SEAT_NOT_AVAILABLE) {
                 binding.imageButtonSeat.setImageResource(R.drawable.seat_not_available)
+                binding.imageButtonSeat.isClickable = false
             }
         }
 

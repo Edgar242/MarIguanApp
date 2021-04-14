@@ -30,11 +30,7 @@
     <string name="seat_available">Disponible</string>
     <string name="seat_selected">Seleccionado</string>
     <string name="seat_not_available">No disponible</string>
-    <plurals name="book_seats">
-        <item quantity="zero">No seats selected</item>
-        <item quantity="one">Book 1 seat</item>
-        <item quantity="other">Book %d seats</item>
-    </plurals>
+    <string name="book_seats">Asientos reservados: %d</string>
     <string-array name="book_steps">
         <item>Seleccione asiento(s)</item>
         <item>Opciones de habitación</item>

@@ -25,8 +25,6 @@ class BookStepOneFragment : Fragment() {
 
         setupRecyclerBookSeat()
 
-        // Set initial string
-        b.textViewCounter.text = getString(R.string.please_select_a_seat)
         return view
     }
 
@@ -110,6 +108,11 @@ class BookStepOneFragment : Fragment() {
 
     // Display how many seats the user has selected
     fun onSeatSelected(counter: Int) {
-        b.textViewCounter.text = resources.getQuantityString(R.plurals.book_seats, counter, counter)
+        if (counter == 0) {
+            b.textViewCounter.text = getString(R.string.please_select_a_seat)
+        } else {
+            b.textViewCounter.text = getString(R.string.book_seats, counter)
+        }
+        (parentFragment as BookFragment).buttonNextVisibility(counter != 0)
     }
 }

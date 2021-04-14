@@ -46,8 +46,9 @@ class BookFragment : Fragment() {
     }
 
     // Show button after is selected a seat
-    fun showNextButton() {
-        b.buttonNext.visibility = View.VISIBLE
+    fun buttonNextVisibility(enabled : Boolean) {
+        b.buttonNext.visibility = if (enabled) View.VISIBLE else View.INVISIBLE
+        b.viewPagerStepper.isUserInputEnabled = enabled
     }
 
     private fun setupStepperView() {
@@ -63,6 +64,7 @@ class BookFragment : Fragment() {
 
     private fun setupViewPager() {
         b.viewPagerStepper.adapter = ViewPagerStepperAdapter(childFragmentManager, lifecycle)
+        b.viewPagerStepper.isUserInputEnabled = false // Disabled by default, enabled based on flow
         b.viewPagerStepper.registerOnPageChangeCallback(
             object : ViewPager2.OnPageChangeCallback() {
                 override fun onPageSelected(position: Int) {
@@ -90,7 +92,6 @@ class BookFragment : Fragment() {
         when(position){
             0 -> {
                 b.buttonBack.visibility = View.INVISIBLE
-                b.buttonNext.visibility = View.VISIBLE
             }
             2-> {
                 b.buttonBack.visibility = View.VISIBLE

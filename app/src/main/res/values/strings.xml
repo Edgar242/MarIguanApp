@@ -31,13 +31,9 @@
     <string name="seat_available">Available</string>
     <string name="seat_selected">Selected</string>
     <string name="seat_not_available">Not available</string>
-    <plurals name="book_seats">
-        <item quantity="zero">No seats selected</item>
-        <item quantity="one">Book 1 seat</item>
-        <item quantity="other">Book %d seats</item>
-    </plurals>
+    <string name="book_seats">Book seats: %d</string>
     <string-array name="book_steps">
-        <item>Select a seat</item>
+        <item>Select seat(s)</item>
         <item>Select room options</item>
         <item>Select payment</item>
     </string-array>
