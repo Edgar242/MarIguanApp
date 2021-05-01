@@ -55,16 +55,18 @@ class BookSeatAdapter(val listener: BookStepOneFragment, private val seats : Arr
             if (seat.number == TYPE_DRIVER) {
                 binding.textViewSeatNumber.text = ""
                 binding.imageButtonSeat.setImageResource(R.drawable.steering)
+                binding.imageButtonSeat.rotation = 0F
+                binding.imageButtonSeat.isEnabled = false
                 return
             }
 
             // Set number and color of seats
             binding.textViewSeatNumber.text = seat.number.toString()
-            binding.imageButtonSeat.setImageResource(R.drawable.seat_available)
+            binding.imageButtonSeat.setImageResource(R.drawable.ic_seat_available)
 
             if (seat.status == SEAT_NOT_AVAILABLE) {
-                binding.imageButtonSeat.setImageResource(R.drawable.seat_not_available)
-                binding.imageButtonSeat.isClickable = false
+                binding.imageButtonSeat.setImageResource(R.drawable.ic_seat_not_available)
+                binding.imageButtonSeat.isEnabled = false
             }
         }
 
@@ -72,12 +74,12 @@ class BookSeatAdapter(val listener: BookStepOneFragment, private val seats : Arr
         private fun toggleSeat(seat: Seat) {
             when(seat.status) {
                 SEAT_AVAILABLE -> {
-                    binding.imageButtonSeat.setImageResource(R.drawable.seat_selected)
+                    binding.imageButtonSeat.setImageResource(R.drawable.ic_seat_selected)
                     seat.status = SEAT_SELECTED
                     counter++
                 }
                 SEAT_SELECTED -> {
-                    binding.imageButtonSeat.setImageResource(R.drawable.seat_available)
+                    binding.imageButtonSeat.setImageResource(R.drawable.ic_seat_available)
                     counter--
                     seat.status = SEAT_AVAILABLE
                 }
