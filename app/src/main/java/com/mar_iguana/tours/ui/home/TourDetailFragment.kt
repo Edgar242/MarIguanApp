@@ -8,6 +8,7 @@ import androidx.fragment.app.Fragment
 import androidx.viewpager2.widget.ViewPager2
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
+import com.mar_iguana.tours.MainActivity
 import com.mar_iguana.tours.R
 import com.mar_iguana.tours.adapters.ImageSliderAdapter
 import com.mar_iguana.tours.adapters.PagerTabAdapter
@@ -50,6 +51,10 @@ class TourDetailFragment : Fragment() {
         //End Image Slider Bar
 
         initViewPager(view, tourDetail)
+
+        // Hide bottom navigation bar in non top level fragments
+        (activity as MainActivity).binding.navView.visibility = View.GONE
+        
         return view
     }
 
