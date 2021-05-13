@@ -1,5 +1,6 @@
 package com.mar_iguana.tours.adapters
 
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -9,6 +10,7 @@ import com.mar_iguana.tours.R
 import com.mar_iguana.tours.databinding.TourItemBinding
 import com.mar_iguana.tours.listeners.TourListener
 import com.mar_iguana.tours.models.Tour
+import com.squareup.picasso.Picasso
 import java.text.NumberFormat
 import java.util.*
 
@@ -40,9 +42,11 @@ class TourAdapter(val tours: ArrayList<Tour>) : RecyclerView.Adapter<TourAdapter
         private var cardTour: CardView = itemView.findViewById(R.id.cardViewProduct)
 
         fun bindTour(tour: Tour) {
-            binding.imageViewPortrait.setImageResource(tour.images[0])
+            val imagesTour: List<String> = tour.images
+            Picasso.get().load(imagesTour[0]).into(binding.imageViewPortrait)
             binding.textViewTitle.text = tour.title
-            binding.textViewDates.text = tour.dates
+            val period = tour.dates[0] + " - " + tour.dates[1]
+            binding.textViewDates.text = period
             binding.textViewPrice.text = formatPrice(tour.price)
             binding.ratingBar.rating = tour.rating
             binding.cardViewProduct.setOnClickListener{

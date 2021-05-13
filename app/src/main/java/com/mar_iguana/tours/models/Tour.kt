@@ -8,10 +8,10 @@ data class Tour(
     val id: Int,
     val title: String?,
     val price: Float,
-    val dates: String?,
+    val dates: List<String>,
     val rating: Float,
-    val images: List<Int>,
+    val images: List<String>,
     val info: String?,
-    val itinerary: String?,
+    val itinerary: List<String>,
     val promo:String?
 ): Parcelable

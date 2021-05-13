@@ -19,7 +19,16 @@ class ItineraryTourFragment : Fragment() {
         val tourInfo =  getArguments()?.getParcelable<Tour>("dataTour")
 
         val itinerary = view.findViewById<TextView>(R.id.itineraryTextView)
-        itinerary.text = tourInfo?.itinerary
+
+        val activities = tourInfo?.itinerary
+        var stringActivities = ""
+        if (activities != null) {
+            for (activity in activities){
+                stringActivities = stringActivities + activity + "\n\n"
+            }
+        }
+
+        itinerary.text = stringActivities
         return view
     }
 

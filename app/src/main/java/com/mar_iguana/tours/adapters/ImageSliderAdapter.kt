@@ -7,8 +7,9 @@ import android.widget.ImageView
 import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.mar_iguana.tours.R
+import com.squareup.picasso.Picasso
 
-class ImageSliderAdapter(private var images: List<Int>)
+class ImageSliderAdapter(private var images: List<String>)
     : RecyclerView.Adapter<ImageSliderAdapter.Pager2ViewHolder>()  {
 
     inner class Pager2ViewHolder(itemView : View) :RecyclerView.ViewHolder(itemView){
@@ -28,7 +29,8 @@ class ImageSliderAdapter(private var images: List<Int>)
     }
 
     override fun onBindViewHolder(holder: ImageSliderAdapter.Pager2ViewHolder, position: Int) {
-        holder.itemImage.setImageResource(images[position])
+        Picasso.get().load(images[position]).into(holder.itemImage)
+        //holder.itemImage.setImageResource(images[position])
     }
 
     override fun getItemCount(): Int {

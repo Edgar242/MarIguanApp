@@ -31,7 +31,8 @@ class InfoTourFragment : Fragment() {
         val promo = view.findViewById<TextView>(R.id.promoTextView)
 
         title.text = tourInfo?.title
-        dates.text = tourInfo?.dates
+        val period = tourInfo?.dates!![0] +" - " + tourInfo?.dates!![1]
+        dates.text = period
         price.text = tourInfo?.price?.let { formatPrice(it) }
         detail.text = tourInfo?.info
         ratingTour.rating = tourInfo!!.rating
