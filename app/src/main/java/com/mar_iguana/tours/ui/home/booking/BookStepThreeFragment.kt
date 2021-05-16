@@ -7,7 +7,6 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
-import android.widget.Toast
 import androidx.fragment.app.Fragment
 import com.mar_iguana.tours.R
 import com.mar_iguana.tours.databinding.FragmentBookStepThreeBinding
@@ -41,9 +40,9 @@ class BookStepThreeFragment : Fragment() {
                 id: Long
             ) {
                 when(position) {
-//                    0 -> {
-//                        b.textViewPaymentDescription.text = ""
-//                    }
+                    0 -> {
+                        b.textViewPaymentDescription.text = ""
+                    }
                     1 -> { // Bank transfer
                         b.textViewPaymentDescription.text =
                             Html.fromHtml("<p>Favor de realizar su pago mediante alguna de las siguientes opciones:</p>" +
@@ -70,11 +69,6 @@ class BookStepThreeFragment : Fragment() {
             override fun onNothingSelected(parent: AdapterView<*>?) {
                 b.textViewPaymentDescription.text = ""
             }
-        }
-
-
-        b.buttonSend.setOnClickListener{
-            Toast.makeText(context, "Enviar información del viaje", Toast.LENGTH_SHORT).show()
         }
 
         return view

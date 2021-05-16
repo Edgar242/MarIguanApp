@@ -7,7 +7,6 @@ import android.widget.RatingBar
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import com.mar_iguana.tours.R
-import com.mar_iguana.tours.databinding.ActivityMainBinding
 import com.mar_iguana.tours.models.Tour
 import com.mar_iguana.tours.utils.Utils
 
@@ -40,11 +39,11 @@ class InfoTourFragment : Fragment() {
         val promo = view.findViewById<TextView>(R.id.promoTextView)
 
         title.text = tourInfo?.title
-        val period = tourInfo?.dates!![0] +" - " + tourInfo?.dates!![1]
+        val period = tourInfo?.dates!![0] +" - " + tourInfo.dates[1]
         dates.text = period
-        price.text = tourInfo?.price?.let { Utils.localCurrencyFormat(it) }
-        detail.text = tourInfo?.info
-        ratingTour.rating = tourInfo!!.rating
+        price.text = tourInfo.price.let { Utils.localCurrencyFormat(it) }
+        detail.text = tourInfo.info
+        ratingTour.rating = tourInfo.rating
         promo.text = tourInfo.promo!!.split("|")[0]
 
         return view
