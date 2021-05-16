@@ -33,6 +33,10 @@
     <string name="book_seats">Asientos reservados: %d</string>
     <string name="go_to_login">¿Tienes una cuenta? Iniciar Sesión</string>
     <string name="create_account">Crear una cuenta</string>
+    <string name="verify_your_email">Por favor verifica tu correo electrónico.</string>
+    <string name="resend_verification">Volver a enviar correo de verificación</string>
+    <string name="logout">Cerrar sesión</string>
+    <string name="auth_error">Error de autenticación</string>
     <string-array name="book_steps">
         <item>Seleccione asiento(s)</item>
         <item>Opciones de habitación</item>

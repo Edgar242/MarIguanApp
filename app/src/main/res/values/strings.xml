@@ -34,6 +34,10 @@
     <string name="book_seats">Book seats: %d</string>
     <string name="go_to_login">Already have an account? Login</string>
     <string name="create_account">Create an account</string>
+    <string name="verify_your_email">Please verify your email.</string>
+    <string name="resend_verification">Resend verification email</string>
+    <string name="logout">Logout</string>
+    <string name="auth_error">Authentication error</string>
     <string-array name="book_steps">
         <item>Select seat(s)</item>
         <item>Select room options</item>

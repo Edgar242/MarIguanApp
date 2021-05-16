@@ -25,15 +25,7 @@ class LoginFragment : Fragment() {
         super.onCreate(savedInstanceState)
         if(FirebaseAuth.getInstance().currentUser != null && FirebaseAuth.getInstance().currentUser.uid.toString() != "2WHaYi5APmh8jvfs4VceGLVgQkI3"){
             //If user is logged open user profile instead of login fragment
-            val profileFragment = ProfileFragment()
-            val bundleProfile = Bundle()
-            profileFragment.arguments = bundleProfile
-
-            parentFragmentManager.beginTransaction().apply {
-                replace(R.id.nav_host_fragment, profileFragment)
-                addToBackStack(null)
-                commit()
-            }
+            goToProfile()
         }
     }
 
@@ -81,9 +73,10 @@ class LoginFragment : Fragment() {
                     .signInWithEmailAndPassword(binding.etEmail.text.toString(), binding.etPassword.text.toString())
                     .addOnCompleteListener{
                         if(it.isSuccessful){
-                            Toast.makeText(activity,"ha ingresado",Toast.LENGTH_LONG*2).show()
+                            goToProfile()
                         }else{
-                            Toast.makeText(activity,"error al autenticar",Toast.LENGTH_LONG*2).show()
+                            binding.AuthError.visibility = View.VISIBLE
+                            Toast.makeText(activity,it.exception?.message,Toast.LENGTH_LONG*2).show()
                         }
                     }
         }
@@ -105,6 +98,18 @@ class LoginFragment : Fragment() {
             }
         }
 
+    }
+
+    fun goToProfile(){
+        val profileFragment = ProfileFragment()
+        val bundleProfile = Bundle()
+        profileFragment.arguments = bundleProfile
+
+        parentFragmentManager.beginTransaction().apply {
+            replace(R.id.nav_host_fragment, profileFragment)
+            addToBackStack(null)
+            commit()
+        }
     }
 
 }

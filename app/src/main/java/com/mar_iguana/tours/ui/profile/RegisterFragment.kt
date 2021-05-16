@@ -249,7 +249,7 @@ class RegisterFragment : Fragment() {
             ?.addOnCompleteListener(){
                 task ->
                 if(task.isComplete){
-                    Toast.makeText(activity,R.string.verification_e_sent,Toast.LENGTH_LONG*2).show()
+                    Toast.makeText(activity,R.string.verification_e_sent,Toast.LENGTH_LONG).show()
                 }else{
                     Toast.makeText(activity,R.string.an_error_ocurred,Toast.LENGTH_LONG).show()
                 }
