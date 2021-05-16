@@ -44,4 +44,5 @@
         <item>Transferencia bancaria</item>
         <item>Cheque</item>
     </string-array>
+    <string name="item_share">Compartir</string>
 </resources>

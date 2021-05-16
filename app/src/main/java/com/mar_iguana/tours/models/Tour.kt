@@ -13,5 +13,6 @@ data class Tour(
     val images: List<String>,
     val info: String?,
     val itinerary: List<String>,
-    val promo:String?
+    val promo:String?,
+    val urlInfoWeb:String?
 ): Parcelable
