@@ -31,6 +31,8 @@
     <string name="seat_selected">Seleccionado</string>
     <string name="seat_not_available">No disponible</string>
     <string name="book_seats">Asientos reservados: %d</string>
+    <string name="go_to_login">¿Tienes una cuenta? Iniciar Sesión</string>
+    <string name="create_account">Crear una cuenta</string>
     <string-array name="book_steps">
         <item>Seleccione asiento(s)</item>
         <item>Opciones de habitación</item>

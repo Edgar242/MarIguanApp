@@ -1,6 +1,5 @@
 package com.mar_iguana.tours.ui.profile
 
-import android.app.Activity
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
@@ -211,15 +210,37 @@ class RegisterFragment : Fragment() {
                     if(task.isComplete){
                         val user:FirebaseUser? = auth.currentUser
                         verifyEmail(user)
-
+                        progressBar.visibility = View.INVISIBLE
                         val userBD = dbReference.child(user?.uid.toString())
 
                         userBD.child("name").setValue(binding.etNameU.text.toString())
                         userBD.child("lastname").setValue(binding.etLastName.text.toString())
                         userBD.child("phone_number").setValue(binding.etCPNumber.text.toString())
                         userBD.child("gender").setValue(genderValue)
+
+                        val loginFragment = LoginFragment()
+                        val bundleLogin = Bundle()
+                        loginFragment.arguments = bundleLogin
+
+                        parentFragmentManager.beginTransaction().apply {
+                            replace(R.id.nav_host_fragment, loginFragment)
+                            addToBackStack(null)
+                            commit()
+                        }
                     }
                 }
+        }
+
+        binding.loginBtn.setOnClickListener {
+            val loginFragment = LoginFragment()
+            val bundleLogin = Bundle()
+            loginFragment.arguments = bundleLogin
+
+            parentFragmentManager.beginTransaction().apply {
+                replace(R.id.nav_host_fragment, loginFragment)
+                addToBackStack(null)
+                commit()
+            }
         }
     //users
     }
@@ -228,12 +249,15 @@ class RegisterFragment : Fragment() {
             ?.addOnCompleteListener(){
                 task ->
                 if(task.isComplete){
-                    Toast.makeText(activity,R.string.verification_e_sent,Toast.LENGTH_LONG).show()
+                    Toast.makeText(activity,R.string.verification_e_sent,Toast.LENGTH_LONG*2).show()
                 }else{
                     Toast.makeText(activity,R.string.an_error_ocurred,Toast.LENGTH_LONG).show()
                 }
 
             }
     }
+
+
+
 
 }
