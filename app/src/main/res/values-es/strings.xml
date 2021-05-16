@@ -31,6 +31,13 @@
     <string name="seat_selected">Seleccionado</string>
     <string name="seat_not_available">No disponible</string>
     <string name="book_seats">Asientos reservados: %d</string>
+    <string name="button_next">Siguiente</string>
+    <string name="button_back">Atrás</string>
+    <string name="departure_date">Fecha de salida:</string>
+    <string name="destiny">Destino:</string>
+    <string name="total_step_two">Total: %s</string>
+    <string name="proof_of_payment">Comprobante de pago</string>
+    <string name="button_upload">Subir</string>
     <string name="go_to_login">¿Tienes una cuenta? Iniciar Sesión</string>
     <string name="create_account">Crear una cuenta</string>
     <string name="verify_your_email">Por favor verifica tu correo electrónico.</string>
@@ -40,14 +47,13 @@
     <string name="save">Guardar</string>
     <string-array name="book_steps">
         <item>Seleccione asiento(s)</item>
-        <item>Opciones de habitación</item>
+        <item>Selección de paquetes</item>
         <item>Seleccione pago</item>
     </string-array>
     <string-array name="payment_type">
-        <item>Tipo de pago</item>
-        <item>Depósito</item>
-        <item>Transferencia bancaria</item>
-        <item>Cheque</item>
+        <item>Seleccione el método de pago:</item>
+        <item>Depósito o transferencia bancaria</item>
+        <item>Efectivo</item>
     </string-array>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
