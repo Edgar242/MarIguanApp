@@ -38,6 +38,12 @@
     <string name="total_step_two">Total: %s</string>
     <string name="proof_of_payment">Comprobante de pago</string>
     <string name="button_upload">Subir</string>
+    <string name="go_to_login">¿Tienes una cuenta? Iniciar Sesión</string>
+    <string name="create_account">Crear una cuenta</string>
+    <string name="verify_your_email">Por favor verifica tu correo electrónico.</string>
+    <string name="resend_verification">Volver a enviar correo de verificación</string>
+    <string name="logout">Cerrar sesión</string>
+    <string name="auth_error">Error de autenticación</string>
     <string-array name="book_steps">
         <item>Seleccione asiento(s)</item>
         <item>Selección de paquetes</item>
@@ -48,4 +54,7 @@
         <item>Depósito o transferencia bancaria</item>
         <item>Efectivo</item>
     </string-array>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="item_share">Compartir</string>
 </resources>

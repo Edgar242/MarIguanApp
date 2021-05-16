@@ -8,6 +8,9 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.database.DatabaseReference
+import com.google.firebase.database.FirebaseDatabase
 import com.mar_iguana.tours.R
 import com.mar_iguana.tours.databinding.FragmentLoginBinding
 
@@ -18,6 +21,14 @@ class LoginFragment : Fragment() {
     private val binding get() = _binding!!
     var email : Boolean = false
 
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        if(FirebaseAuth.getInstance().currentUser != null && FirebaseAuth.getInstance().currentUser.uid.toString() != "2WHaYi5APmh8jvfs4VceGLVgQkI3"){
+            //If user is logged open user profile instead of login fragment
+            goToProfile()
+        }
+    }
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -25,14 +36,16 @@ class LoginFragment : Fragment() {
 
     ): View? {
         _binding = FragmentLoginBinding.inflate(inflater,container,false)
+
         return binding.root
+
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
         fun validation(){
-            binding.button.isEnabled = email
+            binding.buttonLogin.isEnabled = email
         }
 
         //Check email
@@ -55,6 +68,48 @@ class LoginFragment : Fragment() {
             }
         })
 
+        binding.buttonLogin.setOnClickListener {
+            FirebaseAuth.getInstance()
+                    .signInWithEmailAndPassword(binding.etEmail.text.toString(), binding.etPassword.text.toString())
+                    .addOnCompleteListener{
+                        if(it.isSuccessful){
+                            goToProfile()
+                        }else{
+                            binding.AuthError.visibility = View.VISIBLE
+                            Toast.makeText(activity,it.exception?.message,Toast.LENGTH_LONG*2).show()
+                        }
+                    }
+        }
+
+        //go to register
+        fun goToRegister(){
+
+        }
+
+        binding.btnGoRegister.setOnClickListener {
+            val registerFragment = RegisterFragment()
+            val bundleLogin = Bundle()
+            registerFragment.arguments = bundleLogin
+
+            parentFragmentManager.beginTransaction().apply {
+                replace(R.id.nav_host_fragment, registerFragment)
+                addToBackStack(null)
+                commit()
+            }
+        }
+
+    }
+
+    fun goToProfile(){
+        val profileFragment = ProfileFragment()
+        val bundleProfile = Bundle()
+        profileFragment.arguments = bundleProfile
+
+        parentFragmentManager.beginTransaction().apply {
+            replace(R.id.nav_host_fragment, profileFragment)
+            addToBackStack(null)
+            commit()
+        }
     }
 
 }

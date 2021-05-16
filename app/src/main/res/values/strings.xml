@@ -39,6 +39,12 @@
     <string name="total_step_two">Total: %s</string>
     <string name="proof_of_payment">Proof of payment</string>
     <string name="button_upload">Upload</string>
+    <string name="go_to_login">Already have an account? Login</string>
+    <string name="create_account">Create an account</string>
+    <string name="verify_your_email">Please verify your email.</string>
+    <string name="resend_verification">Resend verification email</string>
+    <string name="logout">Logout</string>
+    <string name="auth_error">Authentication error</string>
     <string-array name="book_steps">
         <item>Select seat(s)</item>
         <item>Select package</item>
@@ -49,4 +55,7 @@
         <item>Deposit or Bank transfer</item>
         <item>Cash</item>
     </string-array>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="item_share">Share</string>
 </resources>

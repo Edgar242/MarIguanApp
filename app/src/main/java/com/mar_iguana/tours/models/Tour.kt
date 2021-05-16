@@ -6,13 +6,14 @@ import kotlinx.parcelize.Parcelize
 @Parcelize
 data class Tour(
     val id: Int,
-    val title: String,
-    val price: Int,
-    val dates: String,
+    val title: String?,
+    val price: Float,
+    val dates: List<String>,
     val rating: Float,
-    val images: List<Int>,
-    val info: String,
-    val itinerary: String,
+    val images: List<String>,
+    val info: String?,
+    val itinerary: List<String>,
     val promo:String?,
     val roomOptions: ArrayList<String>
+    val urlInfoWeb:String?
 ): Parcelable

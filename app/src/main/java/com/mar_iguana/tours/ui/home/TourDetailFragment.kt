@@ -21,8 +21,6 @@ import me.relex.circleindicator.CircleIndicator3
 class TourDetailFragment : Fragment() {
     private var _binding: FragmentTourDetailBinding? = null
     private val binding get() = _binding!!
-    lateinit var imageViewPager : ViewPager2
-    //private var imagesBarList = mutableListOf<Int>()
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,savedInstanceState: Bundle?): View? {
         // Inflate the layout for this fragment
@@ -47,7 +45,7 @@ class TourDetailFragment : Fragment() {
 
         val indicator: CircleIndicator3 = view.findViewById(R.id.indicator)
         indicator.setViewPager(viewPagerImages)
-        viewPagerImages.adapter?.registerAdapterDataObserver(indicator.adapterDataObserver);
+        viewPagerImages.adapter?.registerAdapterDataObserver(indicator.adapterDataObserver)
         //End Image Slider Bar
 
         initViewPager(view, tourDetail)
