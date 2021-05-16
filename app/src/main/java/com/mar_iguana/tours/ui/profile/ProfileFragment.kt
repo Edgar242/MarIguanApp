@@ -48,12 +48,6 @@ class ProfileFragment : Fragment() {
                     it.key == user?.uid
                 }
 
-                //Check if user email is not yet verified
-                if(FirebaseAuth.getInstance().currentUser != null && !user!!.isEmailVerified){
-                    binding.verify.visibility = View.VISIBLE
-                    binding.verifyBtn.visibility = View.VISIBLE
-                }
-
                 //setting view data from user data
                 binding.userProfileName.setText(userData?.child("name")?.getValue().toString())
                 binding.userLastName.setText(userData?.child("lastname")?.getValue().toString())
@@ -67,11 +61,7 @@ class ProfileFragment : Fragment() {
         }
         ref.addValueEventListener(getData)
         ref.addListenerForSingleValueEvent(getData)
-
-        binding.verifyBtn.setOnClickListener {
-            verifyEmail(user)
-        }
-
+        
         binding.logoutBtn.setOnClickListener {
             FirebaseAuth.getInstance().signOut()
             val loginFragment = LoginFragment()
