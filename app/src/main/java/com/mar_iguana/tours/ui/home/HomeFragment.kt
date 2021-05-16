@@ -76,7 +76,7 @@ class HomeFragment : Fragment(), TourListener {
     //Client
     private fun getRetrofit(): Retrofit {
         return Retrofit.Builder()
-            .baseUrl("https://demo7188737.mockable.io/")
+            .baseUrl("https://demo5868216.mockable.io/")
             .addConverterFactory(GsonConverterFactory.create())
             .build()
     }
