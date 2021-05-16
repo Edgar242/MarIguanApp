@@ -17,6 +17,10 @@ class ProfileFragment : Fragment() {
     //private lateinit var profileViewModel: ProfileViewModel
     private var _binding:FragmentProfileBinding? = null
     private val binding get() = _binding!!
+    var name = ""
+    var lastname = ""
+    var phone_number = ""
+    var email = ""
 
     private lateinit var auth : FirebaseAuth
 
@@ -48,11 +52,16 @@ class ProfileFragment : Fragment() {
                     it.key == user?.uid
                 }
 
+                name = userData?.child("name")?.getValue().toString()
+                lastname = userData?.child("lastname")?.getValue().toString()
+                phone_number = userData?.child("phone_number")?.getValue().toString()
+                email = user!!.email
+
                 //setting view data from user data
-                binding.userProfileName.setText(userData?.child("name")?.getValue().toString())
-                binding.userLastName.setText(userData?.child("lastname")?.getValue().toString())
-                binding.userPhone.setText(userData?.child("phone_number")?.getValue().toString())
-                binding.userEmail.setText(user?.email)
+                binding.userProfileName.setText(name)
+                binding.userLastName.setText(lastname)
+                binding.userPhone.setText(phone_number)
+                binding.userEmail.setText(email)
 
             }
             override fun onCancelled(databaseError: DatabaseError) {
@@ -61,7 +70,7 @@ class ProfileFragment : Fragment() {
         }
         ref.addValueEventListener(getData)
         ref.addListenerForSingleValueEvent(getData)
-        
+
         binding.logoutBtn.setOnClickListener {
             FirebaseAuth.getInstance().signOut()
             val loginFragment = LoginFragment()
@@ -70,6 +79,22 @@ class ProfileFragment : Fragment() {
 
             parentFragmentManager.beginTransaction().apply {
                 replace(R.id.nav_host_fragment, loginFragment)
+                addToBackStack(null)
+                commit()
+            }
+        }
+
+        binding.editBtn.setOnClickListener{
+            val editProfileFragment = EditProfileFragment()
+            val bundleLogin = Bundle()
+            bundleLogin.putString("name",name)
+            bundleLogin.putString("lastname",lastname)
+            bundleLogin.putString("phone_number",phone_number)
+            bundleLogin.putString("email",email)
+            editProfileFragment.arguments = bundleLogin
+
+            parentFragmentManager.beginTransaction().apply {
+                replace(R.id.nav_host_fragment, editProfileFragment)
                 addToBackStack(null)
                 commit()
             }
