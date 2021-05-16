@@ -1,4 +1,4 @@
-package com.mar_iguana.tours.ui.home.book
+package com.mar_iguana.tours.ui.home.booking
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -113,6 +113,8 @@ class BookStepOneFragment : Fragment() {
         } else {
             b.textViewCounter.text = getString(R.string.book_seats, counter)
         }
-        (parentFragment as BookFragment).buttonNextVisibility(counter != 0)
+        val bookFragment = parentFragment as BookFragment
+        bookFragment.buttonNextVisibility(counter != 0)
+        bookFragment.seatCounter = counter
     }
 }

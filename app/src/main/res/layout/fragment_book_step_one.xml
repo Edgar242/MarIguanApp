@@ -5,7 +5,7 @@
     android:id="@+id/frameLayout2"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.home.book.BookStepOneFragment">
+    tools:context=".ui.home.booking.BookStepOneFragment">
 
     <TextView
         android:id="@+id/textViewCounter"
@@ -42,8 +42,9 @@
         <ImageView
             android:id="@+id/imageView"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:src="@drawable/seat_available" />
+            android:layout_height="40dp"
+            android:rotation="90"
+            android:src="@drawable/ic_seat_available" />
 
         <TextView
             android:layout_width="match_parent"
@@ -54,8 +55,9 @@
         <ImageView
             android:id="@+id/imageView2"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:src="@drawable/seat_selected" />
+            android:layout_height="40dp"
+            android:rotation="90"
+            android:src="@drawable/ic_seat_selected" />
 
         <TextView
             android:layout_width="match_parent"
@@ -66,8 +68,9 @@
         <ImageView
             android:id="@+id/imageView3"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:src="@drawable/seat_not_available" />
+            android:layout_height="40dp"
+            android:rotation="90"
+            android:src="@drawable/ic_seat_not_available" />
 
         <TextView
             android:layout_width="match_parent"

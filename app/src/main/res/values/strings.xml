@@ -32,6 +32,13 @@
     <string name="seat_selected">Selected</string>
     <string name="seat_not_available">Not available</string>
     <string name="book_seats">Book seats: %d</string>
+    <string name="button_next">Next</string>
+    <string name="button_back">Back</string>
+    <string name="departure_date">Departure date:</string>
+    <string name="destiny">Destiny:</string>
+    <string name="total_step_two">Total: %s</string>
+    <string name="proof_of_payment">Proof of payment</string>
+    <string name="button_upload">Upload</string>
     <string name="go_to_login">Already have an account? Login</string>
     <string name="create_account">Create an account</string>
     <string name="verify_your_email">Please verify your email.</string>
@@ -40,14 +47,13 @@
     <string name="auth_error">Authentication error</string>
     <string-array name="book_steps">
         <item>Select seat(s)</item>
-        <item>Select room options</item>
+        <item>Select package</item>
         <item>Select payment</item>
     </string-array>
     <string-array name="payment_type">
-        <item>Payment type</item>
-        <item>Deposit</item>
-        <item>Bank transfer</item>
-        <item>Check</item>
+        <item>Select the payment method:</item>
+        <item>Deposit or Bank transfer</item>
+        <item>Cash</item>
     </string-array>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
