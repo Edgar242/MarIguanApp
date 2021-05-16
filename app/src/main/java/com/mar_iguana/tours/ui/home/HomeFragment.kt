@@ -5,9 +5,7 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.constraintlayout.motion.widget.Debug
 import androidx.fragment.app.Fragment
-import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.mar_iguana.tours.R
@@ -26,7 +24,6 @@ import retrofit2.converter.gson.GsonConverterFactory
 
 class HomeFragment : Fragment(), TourListener {
 
-    private lateinit var homeViewModel: HomeViewModel
     // _binding property is only valid between onCreateView and onDestroyView.
     private var _binding: FragmentHomeBinding? = null
     private val binding get() = _binding!!
@@ -47,7 +44,7 @@ class HomeFragment : Fragment(), TourListener {
         return view
     }
 
-    fun initRecyclerView(){
+    private fun initRecyclerView(){
         tourAdapter = TourAdapter(lstTours)
         tourAdapter.setTourListener(this)
         // Set adapter
@@ -79,7 +76,7 @@ class HomeFragment : Fragment(), TourListener {
     //Client
     private fun getRetrofit(): Retrofit {
         return Retrofit.Builder()
-            .baseUrl("https://demo5868216.mockable.io/")
+            .baseUrl("https://demo7188737.mockable.io/")
             .addConverterFactory(GsonConverterFactory.create())
             .build()
     }

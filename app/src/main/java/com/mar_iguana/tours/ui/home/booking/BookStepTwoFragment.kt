@@ -34,13 +34,14 @@ class BookStepTwoFragment : Fragment() {
         loadRoomOptions()
 
         // Text displayed
-        b.textViewDeparture.text = bookFragment.tourDetail.dates
+        val period = bookFragment.tourDetail.dates[0] + " - " + bookFragment.tourDetail.dates[1]
+        b.textViewDeparture.text = period
         b.textViewDestiny.text = bookFragment.tourDetail.title
         b.checkBoxPromotion.text = "Promo:\n" + bookFragment.tourDetail.promo!!.split("|")[0]
         b.textViewTotal.text = getString(R.string.total_step_two, "${bookFragment.seatCounter} x ${bookFragment.tourDetail.price} = ${Utils.localCurrencyFormat(total)}")
 
         // Checkbox promo
-        b.checkBoxPromotion.setOnCheckedChangeListener { buttonView, isChecked ->
+        b.checkBoxPromotion.setOnCheckedChangeListener { _, isChecked ->
             promo = if (isChecked) bookFragment.tourDetail.promo!!.split("|")[1].toInt() else 0
             updateTotals(optionSelected)
         }
