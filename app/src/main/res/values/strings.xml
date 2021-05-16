@@ -43,4 +43,5 @@
         <item>Bank transfer</item>
         <item>Check</item>
     </string-array>
+    <string name="item_share">Share</string>
 </resources>
