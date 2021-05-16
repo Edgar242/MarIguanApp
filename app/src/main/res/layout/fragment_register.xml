@@ -158,8 +158,6 @@
             </com.google.android.material.textfield.TextInputLayout>
 
 
-
-
             <TextView
                 android:id="@+id/tvGender"
                 android:layout_width="wrap_content"
@@ -167,7 +165,7 @@
                 android:layout_marginLeft="20dp"
                 android:layout_marginTop="28dp"
                 android:text="@string/input_gender"
-                android:textColor="@color/black"
+                android:textColor="?android:attr/textColorPrimary"
                 android:textSize="18sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.045"
