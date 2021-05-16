@@ -38,7 +38,7 @@ class HomeFragment : Fragment(), TourListener {
             Tour(
                 100,
                 "Real de Catorce y la Media Luna (Fin de semana)",
-                2150F,
+                2150,
                 "Del 14 al 16 de mayo de 2021",
                 4.8F,
                 listOf<Int>(
@@ -60,12 +60,15 @@ class HomeFragment : Fragment(), TourListener {
                         "• Pueblo fantasma\n" +
                         "• Cerro del quemado o wirikuta (recorrido opcional)\n" +
                         "• Laguna de la Media Luna",
-                "Preventa \$ 8,000 antes del 5 de mayo"
+                "Preventa \$ 2,000 antes del 5 de mayo|-150",
+                arrayListOf("Habitación Cuadruple(dos camas)|0",
+                            "Habitación Triple (dos camas)|150",
+                            "Habitación Doble (una cama)|250")
             ),
             Tour(
                 100,
                 "Cuatrociénegas y zona del Silencio Coahuila 2021(Semana Santa)",
-                4999F,
+                4999,
                 "Del 31 de Marzo al 04 de Abril 2021",
                 4.1F,
                 listOf<Int>(R.drawable.cuatro_cienegas_0),
@@ -95,12 +98,13 @@ class HomeFragment : Fragment(), TourListener {
                         "• Dunas del desierto\n" +
                         "• Pinturas rupestres\n" +
                         "• tour por el Desierto",
-                "Preventa \$ 4,500 antes del 1 de marzo"
+                "Preventa \$ 4,500 antes del 1 de marzo",
+                arrayListOf("Habitación Triple (dos camas), 150F", "Habitación Doble (una cama), 250")
             ),
             Tour(
                 100,
                 "Barrancas del Cobre (Chihuahua) Dic 2021",
-                8500F,
+                8500,
                 "Del 25 de Dec al 31 de Dec, 2021",
                 4.5F,
                 listOf<Int>(R.drawable.barrancas_del_cobre_0),
@@ -115,12 +119,13 @@ class HomeFragment : Fragment(), TourListener {
                         "• Creel (Lago Arareko, Cuevas Tarahumaras, Cascada Cusarare, Valle de los Hongos y las Ranas y Las Misiones)\n" +
                         "• Barrancas del Cobre (Divisadero y Piedra Volada)\n" +
                         "• Parque de Aventuras Barrancas del cobre (actividades opcionales con costo extra)",
-                "Preventa \$ 8,000 antes del 1 de diciembre"
+                "Preventa \$ 8,000 antes del 1 de diciembre",
+                arrayListOf("Habitación Triple (dos camas), 150F", "Habitación Doble (una cama), 250")
             ),
             Tour(
                 100,
                 "Chiapas Pascua 2021",
-                5700F,
+                5700,
                 "Del 04 al 11 de Abril 2021",
                 4.9F,
                 listOf<Int>(R.drawable.chiapas_0),
@@ -148,7 +153,8 @@ class HomeFragment : Fragment(), TourListener {
                         "• Cascadas de Agua Azul\n" +
                         "• Cascada de Misol-Ha\n" +
                         "• Zona arqueológica de Palenque",
-                "Preventa $ 5,300 antes de 1 de abril"
+                "Preventa $ 5,300 antes de 1 de abril",
+                arrayListOf("Habitación Triple (dos camas), 150F", "Habitación Doble (una cama), 250")
             ),
         )
 

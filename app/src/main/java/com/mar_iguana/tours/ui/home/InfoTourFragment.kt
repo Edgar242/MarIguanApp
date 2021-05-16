@@ -9,8 +9,7 @@ import android.widget.TextView
 import androidx.fragment.app.Fragment
 import com.mar_iguana.tours.R
 import com.mar_iguana.tours.models.Tour
-import java.text.NumberFormat
-import java.util.*
+import com.mar_iguana.tours.utils.Utils
 
 class InfoTourFragment : Fragment() {
 
@@ -21,7 +20,7 @@ class InfoTourFragment : Fragment() {
         // Inflate the layout for this fragment
         val view = inflater.inflate(R.layout.fragment_info_tour, container, false)
 
-        val tourInfo =  getArguments()?.getParcelable<Tour>("dataTour")
+        val tourInfo =  arguments?.getParcelable<Tour>("dataTour")
 
         val title = view.findViewById<TextView>(R.id.titleTextView)
         val dates = view.findViewById<TextView>(R.id.datesTextView)
@@ -32,18 +31,11 @@ class InfoTourFragment : Fragment() {
 
         title.text = tourInfo?.title
         dates.text = tourInfo?.dates
-        price.text = tourInfo?.price?.let { formatPrice(it) }
+        price.text = tourInfo?.price?.let { Utils.localCurrencyFormat(it) }
         detail.text = tourInfo?.info
         ratingTour.rating = tourInfo!!.rating
-        promo.text = tourInfo.promo
+        promo.text = tourInfo.promo!!.split("|")[0]
 
         return view
-    }
-
-    fun formatPrice(number: Float) : String {
-        val format: NumberFormat = NumberFormat.getCurrencyInstance()
-        format.maximumFractionDigits = 0
-        format.currency = Currency.getInstance("MXN")
-        return format.format(number)
     }
 }

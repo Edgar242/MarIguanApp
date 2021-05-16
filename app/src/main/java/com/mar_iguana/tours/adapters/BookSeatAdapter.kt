@@ -7,7 +7,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.mar_iguana.tours.R
 import com.mar_iguana.tours.databinding.BookSeatItemBinding
 import com.mar_iguana.tours.models.Seat
-import com.mar_iguana.tours.ui.home.book.BookStepOneFragment
+import com.mar_iguana.tours.ui.home.booking.BookStepOneFragment
 
 private const val SEAT_AVAILABLE = 0
 private const val SEAT_SELECTED = 1

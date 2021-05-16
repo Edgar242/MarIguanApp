@@ -14,7 +14,7 @@ import com.mar_iguana.tours.adapters.ImageSliderAdapter
 import com.mar_iguana.tours.adapters.PagerTabAdapter
 import com.mar_iguana.tours.databinding.FragmentTourDetailBinding
 import com.mar_iguana.tours.models.Tour
-import com.mar_iguana.tours.ui.home.book.BookFragment
+import com.mar_iguana.tours.ui.home.booking.BookFragment
 import me.relex.circleindicator.CircleIndicator3
 
 
@@ -54,7 +54,7 @@ class TourDetailFragment : Fragment() {
 
         // Hide bottom navigation bar in non top level fragments
         (activity as MainActivity).binding.navView.visibility = View.GONE
-        
+
         return view
     }
 

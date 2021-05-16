@@ -9,7 +9,7 @@ import com.mar_iguana.tours.R
 import com.mar_iguana.tours.databinding.TourItemBinding
 import com.mar_iguana.tours.listeners.TourListener
 import com.mar_iguana.tours.models.Tour
-import java.text.NumberFormat
+import com.mar_iguana.tours.utils.Utils
 import java.util.*
 
 class TourAdapter(val tours: ArrayList<Tour>) : RecyclerView.Adapter<TourAdapter.MyViewHolder>() {
@@ -43,7 +43,7 @@ class TourAdapter(val tours: ArrayList<Tour>) : RecyclerView.Adapter<TourAdapter
             binding.imageViewPortrait.setImageResource(tour.images[0])
             binding.textViewTitle.text = tour.title
             binding.textViewDates.text = tour.dates
-            binding.textViewPrice.text = formatPrice(tour.price)
+            binding.textViewPrice.text = Utils.localCurrencyFormat(tour.price)
             binding.ratingBar.rating = tour.rating
             binding.cardViewProduct.setOnClickListener{
                 tourListener?.onClickShowTourDetail(tour)
@@ -53,12 +53,5 @@ class TourAdapter(val tours: ArrayList<Tour>) : RecyclerView.Adapter<TourAdapter
         fun setTourListener(listener: TourListener?){
             this.tourListener=listener
         }
-    }
-
-    fun formatPrice(number: Float) : String {
-        val format: NumberFormat = NumberFormat.getCurrencyInstance()
-        format.maximumFractionDigits = 0
-        format.currency = Currency.getInstance("MXN")
-        return format.format(number)
     }
 }

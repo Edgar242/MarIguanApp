@@ -1,4 +1,4 @@
-package com.mar_iguana.tours.ui.home.book
+package com.mar_iguana.tours.ui.home.booking
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -18,17 +18,14 @@ class BookFragment : Fragment() {
 
     private var _binding: FragmentBookBinding? = null
     private val b get() = _binding!!
-    private lateinit var tourDetail: Tour
+    lateinit var tourDetail: Tour
+    var seatCounter = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         arguments?.let {
             tourDetail = it.getParcelable<Tour>(ARG_PARAM)!!
         }
-
-//        Toast.makeText(context, tourDetail.toString(), Toast.LENGTH_SHORT).show()
-        // Get price
-
     }
 
     override fun onCreateView(
@@ -52,6 +49,7 @@ class BookFragment : Fragment() {
     }
 
     private fun setupStepperView() {
+        // set the stepper
         b.stepperView.state
             .steps(resources.getStringArray(R.array.book_steps).toMutableList())
             .animationDuration(resources.getInteger(android.R.integer.config_shortAnimTime))
@@ -63,6 +61,7 @@ class BookFragment : Fragment() {
     }
 
     private fun setupViewPager() {
+        // Note: Use childFragmentManager to avoid issues due to pending Fragment transitions
         b.viewPagerStepper.adapter = ViewPagerStepperAdapter(childFragmentManager, lifecycle)
         b.viewPagerStepper.isUserInputEnabled = false // Disabled by default, enabled based on flow
         b.viewPagerStepper.registerOnPageChangeCallback(
@@ -72,6 +71,7 @@ class BookFragment : Fragment() {
                     b.stepperView.go(position, true)
                     setButtonsVisibility(position)
                 }
+
             }
         )
     }
@@ -92,6 +92,7 @@ class BookFragment : Fragment() {
         when(position){
             0 -> {
                 b.buttonBack.visibility = View.INVISIBLE
+                // Next button is visible until user select a seat
             }
             2-> {
                 b.buttonBack.visibility = View.VISIBLE
