@@ -1,6 +1,7 @@
 package com.mar_iguana.tours.ui.profile
 
 import android.os.Bundle
+import android.text.method.ScrollingMovementMethod
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -109,6 +110,8 @@ class ProfileFragment : Fragment() {
                 commit()
             }
         }
+
+        binding.textViewHistory.movementMethod = ScrollingMovementMethod()
 
         return binding.root
     }
