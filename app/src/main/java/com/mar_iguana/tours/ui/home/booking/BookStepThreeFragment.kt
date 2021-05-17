@@ -7,14 +7,24 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
+import android.widget.Toast
 import androidx.fragment.app.Fragment
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.database.DatabaseReference
+import com.google.firebase.database.FirebaseDatabase
 import com.mar_iguana.tours.R
 import com.mar_iguana.tours.databinding.FragmentBookStepThreeBinding
+import com.google.firebase.auth.FirebaseUser
 
 
 class BookStepThreeFragment : Fragment() {
     private var _binding : FragmentBookStepThreeBinding? = null
     private val b get() = _binding!!
+    private lateinit var bookFragment: BookFragment
+
+    private lateinit var dbReference: DatabaseReference
+    private lateinit var database: FirebaseDatabase
+    private lateinit var auth : FirebaseAuth
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -25,11 +35,36 @@ class BookStepThreeFragment : Fragment() {
         _binding = FragmentBookStepThreeBinding.inflate(inflater, container, false)
         val view = b.root
 
+        // Uploading purchased trip to firebase ====================================================
+
+        //Connection with firebase
+        database = FirebaseDatabase.getInstance()
+        auth = FirebaseAuth.getInstance()
+        dbReference = database.reference.child("User")
+
+        //getting tour data
+        bookFragment = parentFragment as BookFragment
+        val tour = bookFragment.tourDetail
+
+        // getting user from firebase databse
+        val user: FirebaseUser? = auth.currentUser
+        val tipsDB = dbReference.child(user?.uid.toString()).child("viajes")
+
+        //uploading trip on clicking buttonUpload
+        b.buttonUpload.setOnClickListener {
+            val tourDB = tipsDB.child("${tour.id}")
+            tourDB.child("title").setValue(tour.title)
+            tourDB.child("status").setValue("Verificando.")
+        }
+
+        //==========================================================================================
+
         val paymentMethods = resources.getStringArray(R.array.payment_type)
         val adapter = ArrayAdapter<String>(requireContext(),
             R.layout.support_simple_spinner_dropdown_item,
             paymentMethods)
         b.spinner.adapter = adapter
+
 
 
         b.spinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
@@ -70,6 +105,8 @@ class BookStepThreeFragment : Fragment() {
                 b.textViewPaymentDescription.text = ""
             }
         }
+
+
 
         return view
     }

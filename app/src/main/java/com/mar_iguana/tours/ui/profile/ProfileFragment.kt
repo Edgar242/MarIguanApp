@@ -63,6 +63,16 @@ class ProfileFragment : Fragment() {
                 binding.userPhone.setText(phone_number)
                 binding.userEmail.setText(email)
 
+                var trips = userData?.child("viajes")?.children
+                var tripsHistory = StringBuilder()
+                if(trips != null){
+                    for(i in trips){
+                        var title = i.child("title").getValue().toString()
+                        var status = i.child("status").getValue().toString()
+                        tripsHistory.append("${i.key} - ${title} - ${status}\r\n")
+                    }
+                    binding.textViewHistory.setText(tripsHistory)
+                }
             }
             override fun onCancelled(databaseError: DatabaseError) {
                 // handle error

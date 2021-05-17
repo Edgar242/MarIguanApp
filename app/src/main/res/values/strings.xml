@@ -47,6 +47,8 @@
     <string name="auth_error">Authentication error</string>
     <string name="save">Save</string>
     <string name="update_info">Update your info</string>
+    <string name="trips">Trips:</string>
+    <string name="no_travel_history">No travel history</string>
     <string-array name="book_steps">
         <item>Select seat(s)</item>
         <item>Select package</item>
