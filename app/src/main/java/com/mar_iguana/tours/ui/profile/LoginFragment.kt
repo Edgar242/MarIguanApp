@@ -9,14 +9,11 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.database.DatabaseReference
-import com.google.firebase.database.FirebaseDatabase
 import com.mar_iguana.tours.R
 import com.mar_iguana.tours.databinding.FragmentLoginBinding
 
 class LoginFragment : Fragment() {
 
-    //private lateinit var profileViewModel: ProfileViewModel
     private var _binding:FragmentLoginBinding? = null
     private val binding get() = _binding!!
     var email : Boolean = false

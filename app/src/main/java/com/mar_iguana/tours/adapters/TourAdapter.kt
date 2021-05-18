@@ -1,6 +1,5 @@
 package com.mar_iguana.tours.adapters
 
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -12,7 +11,6 @@ import com.mar_iguana.tours.listeners.TourListener
 import com.mar_iguana.tours.models.Tour
 import com.mar_iguana.tours.utils.Utils
 import com.squareup.picasso.Picasso
-import java.text.NumberFormat
 import java.util.*
 
 class TourAdapter(val tours: ArrayList<Tour>) : RecyclerView.Adapter<TourAdapter.MyViewHolder>() {
