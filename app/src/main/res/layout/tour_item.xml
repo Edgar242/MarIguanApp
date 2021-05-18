@@ -63,6 +63,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             android:numStars="5"
+            android:progressTint="@color/yellow_900"
             android:scrollbarSize="4dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
