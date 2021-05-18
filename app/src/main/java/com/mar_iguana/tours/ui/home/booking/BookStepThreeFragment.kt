@@ -70,12 +70,6 @@ class BookStepThreeFragment : Fragment() {
         val user: FirebaseUser? = auth.currentUser
         val tipsDB = dbReference.child(user?.uid.toString()).child("viajes")
 
-        //uploading trip on clicking buttonUpload
-        b.buttonUpload.setOnClickListener {
-            val tourDB = tipsDB.child("${tour.id}")
-            tourDB.child("title").setValue(tour.title)
-            tourDB.child("status").setValue("Verificando.")
-        }
 
         //==========================================================================================
 
@@ -125,6 +119,10 @@ class BookStepThreeFragment : Fragment() {
         }
 
         b.buttonUpload.setOnClickListener {
+            val id = generateId(8)
+            val tourDB = tipsDB.child("${id}")
+            tourDB.child("title").setValue(tour.title)
+            tourDB.child("status").setValue("Verificando.")
             showUploadOptions()
         }
 
@@ -148,6 +146,13 @@ class BookStepThreeFragment : Fragment() {
                 Toast.makeText(requireContext(), "Cancel pressed", Toast.LENGTH_SHORT).show()
             }
         }.show()
+    }
+
+    fun generateId(length: Int) : String {
+        val allowedChars = ('A'..'Z') + ('a'..'z') + ('0'..'9')
+        return (1..length)
+            .map { allowedChars.random() }
+            .joinToString("")
     }
 
     private fun openCamera() {

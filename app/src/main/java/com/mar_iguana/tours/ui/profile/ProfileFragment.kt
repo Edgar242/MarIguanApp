@@ -70,7 +70,7 @@ class ProfileFragment : Fragment() {
                     for(i in trips){
                         var title = i.child("title").getValue().toString()
                         var status = i.child("status").getValue().toString()
-                        tripsHistory.append("${i.key} - ${title} - ${status}\r\n")
+                        tripsHistory.append("${title} - ${status}\r\n")
                     }
                     binding.textViewHistory.setText(tripsHistory)
                 }
