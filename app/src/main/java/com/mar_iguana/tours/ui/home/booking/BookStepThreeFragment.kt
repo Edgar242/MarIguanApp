@@ -19,15 +19,15 @@ import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.core.content.FileProvider
 import androidx.fragment.app.Fragment
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.FirebaseUser
+import com.google.firebase.database.DatabaseReference
+import com.google.firebase.database.FirebaseDatabase
 import com.mar_iguana.tours.BuildConfig
 import com.mar_iguana.tours.R
 import com.mar_iguana.tours.databinding.FragmentBookStepThreeBinding
 import java.io.File
 import java.io.IOException
-import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.database.DatabaseReference
-import com.google.firebase.database.FirebaseDatabase
-import com.google.firebase.auth.FirebaseUser
 
 
 private const val CAMERA_REQUEST_PERMISSION_CODE = 1
@@ -70,6 +70,13 @@ class BookStepThreeFragment : Fragment() {
         val user: FirebaseUser? = auth.currentUser
         val tipsDB = dbReference.child(user?.uid.toString()).child("viajes")
 
+        //uploading trip on clicking buttonUpload
+        b.buttonUpload.setOnClickListener {
+            val tourDB = tipsDB.child("${tour.id}")
+            tourDB.child("title").setValue(tour.title)
+            tourDB.child("status").setValue("Verificando.")
+            showUploadOptions()
+        }
 
         //==========================================================================================
 
@@ -118,14 +125,6 @@ class BookStepThreeFragment : Fragment() {
             }
         }
 
-        b.buttonUpload.setOnClickListener {
-            val id = generateId(8)
-            val tourDB = tipsDB.child("${id}")
-            tourDB.child("title").setValue(tour.title)
-            tourDB.child("status").setValue("Verificando.")
-            showUploadOptions()
-        }
-
         return view
     }
 
@@ -143,7 +142,7 @@ class BookStepThreeFragment : Fragment() {
                 }
             }
             setNeutralButton("Cancel") { _, _ ->
-                Toast.makeText(requireContext(), "Cancel pressed", Toast.LENGTH_SHORT).show()
+                Toast.makeText(requireContext(), "You must choose an option to upload your proof of payment", Toast.LENGTH_SHORT).show()
             }
         }.show()
     }
