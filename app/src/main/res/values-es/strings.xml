@@ -46,6 +46,8 @@
     <string name="auth_error">Error de autenticación</string>
     <string name="save">Guardar</string>
     <string name="update_info">Actualiza tu información</string>
+    <string name="trips">Viajes:</string>
+    <string name="no_travel_history">Sin historial de viajes</string>
     <string-array name="book_steps">
         <item>Seleccione asiento(s)</item>
         <item>Selección de paquetes</item>

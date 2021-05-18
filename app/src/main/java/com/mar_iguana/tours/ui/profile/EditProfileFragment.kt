@@ -11,8 +11,7 @@ import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
 import com.mar_iguana.tours.R
 import com.mar_iguana.tours.databinding.FragmentEditProfileBinding
-import com.mar_iguana.tours.databinding.FragmentTourDetailBinding
-import com.mar_iguana.tours.models.Tour
+
 
 
 class EditProfileFragment : Fragment() {

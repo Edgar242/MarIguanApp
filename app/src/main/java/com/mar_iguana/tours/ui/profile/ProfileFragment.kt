@@ -1,6 +1,7 @@
 package com.mar_iguana.tours.ui.profile
 
 import android.os.Bundle
+import android.text.method.ScrollingMovementMethod
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -63,6 +64,16 @@ class ProfileFragment : Fragment() {
                 binding.userPhone.setText(phone_number)
                 binding.userEmail.setText(email)
 
+                var trips = userData?.child("viajes")?.children
+                var tripsHistory = StringBuilder()
+                if(trips != null){
+                    for(i in trips){
+                        var title = i.child("title").getValue().toString()
+                        var status = i.child("status").getValue().toString()
+                        tripsHistory.append("${i.key} - ${title} - ${status}\r\n")
+                    }
+                    binding.textViewHistory.setText(tripsHistory)
+                }
             }
             override fun onCancelled(databaseError: DatabaseError) {
                 // handle error
@@ -99,6 +110,8 @@ class ProfileFragment : Fragment() {
                 commit()
             }
         }
+
+        binding.textViewHistory.movementMethod = ScrollingMovementMethod()
 
         return binding.root
     }

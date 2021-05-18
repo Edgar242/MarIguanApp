@@ -24,6 +24,11 @@ import com.mar_iguana.tours.R
 import com.mar_iguana.tours.databinding.FragmentBookStepThreeBinding
 import java.io.File
 import java.io.IOException
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.database.DatabaseReference
+import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.auth.FirebaseUser
+
 
 private const val CAMERA_REQUEST_PERMISSION_CODE = 1
 private const val CAMERA_REQUEST_CODE = 42
@@ -35,6 +40,12 @@ class BookStepThreeFragment : Fragment() {
     private val b get() = _binding!!
     private lateinit var currentPhotoPath: String
 
+    private lateinit var bookFragment: BookFragment
+
+    private lateinit var dbReference: DatabaseReference
+    private lateinit var database: FirebaseDatabase
+    private lateinit var auth : FirebaseAuth
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -43,6 +54,30 @@ class BookStepThreeFragment : Fragment() {
 
         _binding = FragmentBookStepThreeBinding.inflate(inflater, container, false)
         val view = b.root
+
+        // Uploading purchased trip to firebase ====================================================
+
+        //Connection with firebase
+        database = FirebaseDatabase.getInstance()
+        auth = FirebaseAuth.getInstance()
+        dbReference = database.reference.child("User")
+
+        //getting tour data
+        bookFragment = parentFragment as BookFragment
+        val tour = bookFragment.tourDetail
+
+        // getting user from firebase databse
+        val user: FirebaseUser? = auth.currentUser
+        val tipsDB = dbReference.child(user?.uid.toString()).child("viajes")
+
+        //uploading trip on clicking buttonUpload
+        b.buttonUpload.setOnClickListener {
+            val tourDB = tipsDB.child("${tour.id}")
+            tourDB.child("title").setValue(tour.title)
+            tourDB.child("status").setValue("Verificando.")
+        }
+
+        //==========================================================================================
 
         val paymentMethods = resources.getStringArray(R.array.payment_type)
         val adapter = ArrayAdapter(requireContext(),

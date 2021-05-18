@@ -37,7 +37,6 @@
                     android:layout_marginLeft="20dp"
                     android:layout_marginTop="28dp"
                     android:layout_marginRight="20dp"
-                    android:background="?android:attr/textColorPrimaryInverse"
                     android:ems="10"
                     android:inputType="textPersonName" />
             </com.google.android.material.textfield.TextInputLayout>
@@ -59,7 +58,6 @@
                     android:layout_marginLeft="20dp"
                     android:layout_marginTop="28dp"
                     android:layout_marginRight="20dp"
-                    android:background="?android:attr/textColorPrimaryInverse"
                     android:ems="10"
 
                     android:inputType="textPersonName" />
@@ -82,7 +80,6 @@
                     android:layout_marginLeft="20dp"
                     android:layout_marginTop="28dp"
                     android:layout_marginRight="20dp"
-                    android:background="?android:attr/textColorPrimaryInverse"
                     android:ems="10"
                     android:inputType="textEmailAddress" />
             </com.google.android.material.textfield.TextInputLayout>
@@ -105,7 +102,6 @@
                     android:layout_marginLeft="20dp"
                     android:layout_marginTop="28dp"
                     android:layout_marginRight="20dp"
-                    android:background="?android:attr/textColorPrimaryInverse"
                     android:ems="10"
                     android:inputType="textPassword" />
             </com.google.android.material.textfield.TextInputLayout>
@@ -128,7 +124,6 @@
                     android:layout_marginLeft="20dp"
                     android:layout_marginTop="28dp"
                     android:layout_marginRight="20dp"
-                    android:background="?android:attr/textColorPrimaryInverse"
                     android:ems="10"
                     android:inputType="textPassword" />
             </com.google.android.material.textfield.TextInputLayout>
@@ -152,7 +147,6 @@
                     android:layout_marginLeft="20dp"
                     android:layout_marginTop="28dp"
                     android:layout_marginRight="20dp"
-                    android:background="?android:attr/textColorPrimaryInverse"
                     android:ems="10"
                     android:inputType="number" />
             </com.google.android.material.textfield.TextInputLayout>
@@ -165,7 +159,6 @@
                 android:layout_marginLeft="20dp"
                 android:layout_marginTop="28dp"
                 android:text="@string/input_gender"
-                android:textColor="?android:attr/textColorPrimary"
                 android:textSize="18sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.045"
