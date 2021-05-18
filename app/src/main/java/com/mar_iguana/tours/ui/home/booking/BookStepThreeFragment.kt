@@ -72,10 +72,10 @@ class BookStepThreeFragment : Fragment() {
 
         //uploading trip on clicking buttonUpload
         b.buttonUpload.setOnClickListener {
-            showUploadOptions()
             val tourDB = tipsDB.child("${tour.id}")
             tourDB.child("title").setValue(tour.title)
             tourDB.child("status").setValue("Verificando.")
+            showUploadOptions()
         }
 
         //==========================================================================================
@@ -145,6 +145,13 @@ class BookStepThreeFragment : Fragment() {
                 Toast.makeText(requireContext(), "You must choose an option to upload your proof of payment", Toast.LENGTH_SHORT).show()
             }
         }.show()
+    }
+
+    fun generateId(length: Int) : String {
+        val allowedChars = ('A'..'Z') + ('a'..'z') + ('0'..'9')
+        return (1..length)
+            .map { allowedChars.random() }
+            .joinToString("")
     }
 
     private fun openCamera() {
