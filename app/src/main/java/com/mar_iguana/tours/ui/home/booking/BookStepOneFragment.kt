@@ -11,7 +11,6 @@ import com.mar_iguana.tours.adapters.BookSeatAdapter
 import com.mar_iguana.tours.databinding.FragmentBookStepOneBinding
 import com.mar_iguana.tours.models.Seat
 
-
 class BookStepOneFragment : Fragment() {
     private var _binding : FragmentBookStepOneBinding? = null
     private val b get() = _binding!!
