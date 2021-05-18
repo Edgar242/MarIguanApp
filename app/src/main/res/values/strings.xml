@@ -1,3 +1,65 @@
 <resources>
-    <string name="app_name">MarIguanApp</string>
+    <string name="app_name" translatable="false">Mar-Iguana Tours</string>
+    <string name="title_activity_main" translatable="false">MainActivity</string>
+    <string name="title_home">Home</string>
+    <string name="title_wishlist">Wishlist</string>
+    <string name="title_profile">Profile</string>
+    <string name="input_name">Name</string>
+    <string name="input_lastname">Lastname</string>
+    <string name="input_email">Email</string>
+    <string name="input_password">Password</string>
+    <string name="input_repeat_password">Repeat password</string>
+    <string name="input_celular">Phone number</string>
+    <string name="input_gender">Gender</string>
+    <string name="input_male">Male</string>
+    <string name="input_female">Female</string>
+    <string name="button_register">Register</string>
+    <string name="invalid_name">Invalid name</string>
+    <string name="invalid_last_name">Invalid lastname</string>
+    <string name="invalid_email">Invalid email</string>
+    <string name="invalid_phone_number">Invalid phone number</string>
+    <string name="too_short_password">Password must have at least 6 characters.</string>
+    <string name="passwords_do_not_match">Passwords do not match</string>
+    <string name="login">Login</string>
+    <string name="wrong_email_or_password">Wrong email or password</string>
+    <string name="tab_info">INFORMATION</string>
+    <string name="tab_itinerary">ITINERARY</string>
+    <string name="lbl_visit">We will visit: </string>
+    <string name="verification_e_sent">Verification email sent</string>
+    <string name="an_error_ocurred">An error occurred while sending the verification email</string>
+    <string name="please_select_a_seat">Please select a seat</string>
+    <string name="seat_available">Available</string>
+    <string name="seat_selected">Selected</string>
+    <string name="seat_not_available">Not available</string>
+    <string name="book_seats">Book seats: %d</string>
+    <string name="button_next">Next</string>
+    <string name="button_back">Back</string>
+    <string name="departure_date">Departure date:</string>
+    <string name="destiny">Destiny:</string>
+    <string name="total_step_two">Total: %s</string>
+    <string name="proof_of_payment">Proof of payment</string>
+    <string name="button_upload">Upload</string>
+    <string name="go_to_login">Already have an account? Login</string>
+    <string name="create_account">Create an account</string>
+    <string name="verify_your_email">Please verify your email.</string>
+    <string name="resend_verification">Resend verification email</string>
+    <string name="logout">Logout</string>
+    <string name="auth_error">Authentication error</string>
+    <string name="save">Save</string>
+    <string name="update_info">Update your info</string>
+    <string name="trips">Trips:</string>
+    <string name="no_travel_history">No travel history</string>
+    <string-array name="book_steps">
+        <item>Select seat(s)</item>
+        <item>Select package</item>
+        <item>Select payment</item>
+    </string-array>
+    <string-array name="payment_type">
+        <item>Select the payment method:</item>
+        <item>Deposit or Bank transfer</item>
+        <item>Cash</item>
+    </string-array>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="item_share">Share</string>
 </resources>
